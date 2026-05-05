@@ -49,9 +49,7 @@ permissions:
 # WORKFLOW-WIDE ENVIRONMENT
 # ---------------------------------------------------------------------------
 env:
-  # Opt into Node.js 24 for ALL actions in this workflow.
-  # Fixes: "Node.js 20 is deprecated" warning on every action step.
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 
   # Unbuffered Python output — ensures every print() and traceback line
   # appears in the Actions log immediately, not after the step finishes.
@@ -126,7 +124,7 @@ jobs:
           echo ""
 
           # Run with unbuffered output so tracebacks appear in real time
-          python -u scraper_ManeualSubmission_3.py
+          python -u scraper_ManeualSubmission.py
 
           echo ""
           echo "▶ Workspace after scraper:"
@@ -185,7 +183,7 @@ jobs:
           echo ""
 
           # Run preprocessor — all stdout/stderr visible thanks to PYTHONUNBUFFERED
-          python -u preprocess_3.py \
+          python -u preprocess.py \
             --input      "$WS/freelance_data.json" \
             --output-dir "$WS"
 
